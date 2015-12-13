@@ -14,3 +14,10 @@ two:
   link: http://guides.ruby-china.org/testing.html
   content: 本文介绍 Rails 内建对测试的支持。
 
+
+three:
+  id: 3
+  e_id: http://guides.ruby-china.org/testing.html
+  title: Rails 程序测试指南2
+  link: http://guides.ruby-china.org/testing.html
+  content: 本文介绍 Rails 内建对测试的支持。

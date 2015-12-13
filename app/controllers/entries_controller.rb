@@ -19,6 +19,11 @@ class EntriesController < ApplicationController
     render json: @entries
   end
 
+  def destroy
+    @entry = Entry.delete(params[:id])
+    render nothing: true
+  end
+
 
   private
   def entry_param
