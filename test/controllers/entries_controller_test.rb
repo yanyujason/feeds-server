@@ -36,7 +36,7 @@ class EntriesControllerTest < ActionController::TestCase
     assigns = assigns(:entry)
 
     assert_response :success
-    assert_equal(assigns.id, @entry.id)
+    assert_equal(assigns, @entry)
   end
 
   test 'should destroy entry' do
