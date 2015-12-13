@@ -3,39 +3,30 @@ require 'test_helper'
 class EntriesControllerTest < ActionController::TestCase
 
   def setup
-    @entry = entries(:three)
-  end
-
-  test 'should route to entries' do
-    assert_routing '/entries', {controller: 'entries', action: 'index'}
+    @entry = generate_entry()
+    @entry.save
   end
 
   test 'should get entries list' do
+    generate_entry().save
+    generate_entry().save
+
     @request.headers['Accept'] = 'application/json'
     get :index
     assert_response :success
     assert_not_nil assigns(:entries)
-    assert_equal(assigns(:entries).count, 3)
+    assert_equal(3, assigns(:entries).count)
   end
 
-
   test 'should create entry' do
-    e_id = 'http://guides.ruby-china.org/testing.html'
-    
     assert_difference('Entry.count', 1) do
       @request.headers['Accept'] = 'application/json'
-      post :create, entry: {e_id: e_id, title: 'Some title'}
+      post :create, entry: {title: 'Some title'}
     end
-
     assigns = assigns(:entry)
 
     assert_response :success
-    assert_not_nil assigns
-    assert_equal(assigns.e_id, e_id)
-  end
-
-  test 'should route to entry' do
-    assert_routing '/entries/1', {controller: 'entries', action: 'show', id: '1'}
+    assert_equal(assigns.title, 'Some title')
   end
 
   test 'should get special entry' do
@@ -45,29 +36,27 @@ class EntriesControllerTest < ActionController::TestCase
     assigns = assigns(:entry)
 
     assert_response :success
-    assert_not_nil assigns
-    assert_equal(assigns.e_id, @entry.e_id)
-  end
-
-  test 'should route to new entry' do
-    assert_routing '/entries/new', {controller: 'entries', action: 'new'}
-  end
-
-  test 'should navigate to new entry page' do
-    get :new
-    assert_response :success
-    assert_template :new
-    assert_template layout: 'layouts/application'
+    assert_equal(assigns.id, @entry.id)
   end
 
   test 'should destroy entry' do
     assert_difference('Entry.count', -1) do
+      @request.headers['Accept'] = 'application/json'
       delete :destroy, id: @entry.id
     end
     assert_response :success
   end
 
-  def tearDown
-    @entry = nil
+  def teardown
+    Entry.delete_all
+  end
+
+  def generate_entry(title='Rails 程序测试指南', link='http://guides.ruby-china.org/testing.html',
+                     content = '本文介绍 Rails 内建对测试的支持。')
+    entry = Entry.new
+    entry.title = title
+    entry.link=link
+    entry.content = content
+    return entry
   end
 end

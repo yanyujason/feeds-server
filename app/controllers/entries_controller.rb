@@ -20,10 +20,9 @@ class EntriesController < ApplicationController
   end
 
   def destroy
-    @entry = Entry.delete(params[:id])
+    @entry = Entry.find(params[:id]).destroy
     render nothing: true
   end
-
 
   private
   def entry_param

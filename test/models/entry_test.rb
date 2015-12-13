@@ -1,16 +1,24 @@
-require 'test_helper'
+
 
 class EntryTest < ActiveSupport::TestCase
 
-  test "should not save post without e_id" do
-    entry = Entry.new
-    entry.title = 'This is title'
-    assert_not entry.save, 'e_id should not be empty!'
+  test 'should save entry' do
+    assert_difference('Entry.count', 2) do
+      Entry.create
+      Entry.create
+    end
   end
 
-  test "should not save post without title" do
-    entry = Entry.new
-    entry.e_id = 'http://guides.ruby-china.org/testing.html'
-    assert_not entry.save, 'e_id should not be empty!'
+  test 'should delete entry' do
+    Entry.create
+    entry = Entry.create
+    assert_difference('Entry.count', -1) do
+      entry.destroy
+    end
   end
+
+  def after_teardown
+    Entry.delete_all
+  end
+
 end
