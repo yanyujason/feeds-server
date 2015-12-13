@@ -1,0 +1,14 @@
+language: ruby
+
+services: sqlite
+
+rvm:
+   - 2.0.0p481
+
+before_install:
+  - gem install bundler
+
+before_script:
+  - bundle update
+
+cache: bundler
