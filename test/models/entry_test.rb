@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class EntryTest < ActiveSupport::TestCase
-  test "the truth" do
-    assert true, 'it should be true'
-  end
 
   test "should not save post without e_id" do
     entry = Entry.new
