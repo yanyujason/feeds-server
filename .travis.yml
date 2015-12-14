@@ -1,6 +1,6 @@
 language: ruby
 
-services: sqlite
+services: mongodb
 
 rvm:
    - 2.0.0
