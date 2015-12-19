@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Rails 程序测试指南
+  author: Qiu
+  link: http://guides.ruby-china.org/testing.html
+  source: http://guides.ruby-china.org/testing.html
+
+two:
+  title: Rails 程序测试指南
+  author: Qiu
+  link: http://guides.ruby-china.org/testing.html
+  source: http://guides.ruby-china.org/testing.html

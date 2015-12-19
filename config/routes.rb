@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
-  resources :entries
+  resources :feeds do
+    resources :articles
+  end
 
   # namespace :api do
   #   resources :entries, :defaults => { :format => 'xml' }

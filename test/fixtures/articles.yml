@@ -1,23 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  id: 1
-  e_id: http://guides.ruby-china.org/testing.html
   title: Rails 程序测试指南
   link: http://guides.ruby-china.org/testing.html
+  summary: 本文介绍Rails
+  image_url: http://guides.ruby-china.org/testing.html
   content: 本文介绍 Rails 内建对测试的支持。
+  feed_id: 1
 
 two:
-  id: 2
-  e_id: http://guides.ruby-china.org/testing.html
   title: Rails 程序测试指南2
   link: http://guides.ruby-china.org/testing.html
+  summary: 本文介绍Rails
+  image_url: http://guides.ruby-china.org/testing.html
   content: 本文介绍 Rails 内建对测试的支持。
-
+  feed_id: 1
 
 three:
-  id: 3
-  e_id: http://guides.ruby-china.org/testing.html
   title: Rails 程序测试指南2
   link: http://guides.ruby-china.org/testing.html
+  summary: 本文介绍Rails
+  image_url: http://guides.ruby-china.org/testing.html
   content: 本文介绍 Rails 内建对测试的支持。
+  feed_id: 1

@@ -11,15 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151208145312) do
+ActiveRecord::Schema.define(version: 20151219044626) do
 
-  create_table "entries", force: :cascade do |t|
-    t.string   "e_id"
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
     t.string   "title"
     t.string   "link"
+    t.string   "summary"
+    t.string   "image_url"
     t.text     "content"
+    t.integer  "feed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_index "articles", ["feed_id"], name: "index_articles_on_feed_id", using: :btree
+
+  create_table "feeds", force: :cascade do |t|
+    t.string   "title"
+    t.string   "author"
+    t.string   "link"
+    t.string   "source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "articles", "feeds"
 end

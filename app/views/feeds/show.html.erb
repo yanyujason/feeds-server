@@ -1,0 +1,50 @@
+<p>
+  <strong>Title:</strong>
+  <%= @feed.title %>
+</p>
+
+<p>
+  <strong>link:</strong>
+  <%= @feed.link %>
+</p>
+
+<p>
+  <strong>Author:</strong>
+  <%= @feed.author %>
+</p>
+
+<h2>Entries</h2>
+
+<% @feed.entries.each do |entry| %>
+    <p>
+      <strong>title:</strong>
+      <%= entry.title %>
+    </p>
+    <p>
+      <strong>link:</strong>
+      <%= entry.link %>
+    </p>
+    <p>
+      <strong>content:</strong>
+      <%= entry.content %>
+    </p>
+<% end %>
+
+<h2>Add a entry:</h2>
+<%= form_for([@feed, @feed.entries.build]) do |f| %>
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :link %><br>
+      <%= f.text_field :link %>
+    </p>
+    <p>
+      <%= f.label :content %><br>
+      <%= f.text_area :content %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
