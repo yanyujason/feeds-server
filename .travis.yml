@@ -1,8 +1,20 @@
 language: ruby
 
-services: mongodb
+services: postgresql
+
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
 
 rvm:
-   - 2.0.0
+  - 2.0.0
 
 cache: bundler
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: GZ1ar5Rk+p09b2csnUWqZLlBmmLSHuwI220T2pQSV2ScDJb0Veg83nbxHsj4l2GEyz0H8INHekPimxLME3Q6/EZ2D7DCm09NCMvOPPHh4818we86hoBwcUU5C6HXqZPiRW3JZXYCFs3ng0mEeTxytk06wmLfUV//gaeJzuRwU0l5mZz8KHwuRd5xwsbd+abPCFxyhHNS1AAtHKPABF9w1efB68yjTjGDIV0mHGkoLdYJjL2PF4Yfuj1hYrRRzbdAVQWoQ7mVBVXZ8VtmguxIg+EHgyDekbmVzC7mvq8z0XiS60lBC1jt6WY8G4bhNPX8sF/pUdY8GrEK3NNg6R9EkBxiYge+KQl+YLN8xqJOHFWwwfPQg+qTkyKoRAVEqrwpGuuJyvhthKFtXtwFHXYS/Jue5hiDMqr6FpRetIG5LudWdggtnmN7QM5jjKVxZKMP1b41O/bt6xVh/mKzvnQUxL/j7ygrGQA18WLZ6RmlDkZUjwwbxhMgmn9dHTq3Skw55QpEpItldsbRTYEwe4ZbpzLEO+5mw44TtjEqTXNQO4SgYHUDRjT4pWeXJExw1UMxczOdekTm58bYDhcFvTXsSv3K7cLmbLjgebEJUjrFbOJ1/8782WxmyRXzfUXKDrbRd6h3rliazy+0+R5rTdJB7Kyy1EWWpytS/WMx/8FrBa0=
+  strategy: git
+  run:
+    - "rake db:migrate"
+    - restart
