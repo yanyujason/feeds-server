@@ -2,7 +2,6 @@ class ArticlesController < ApplicationController
   def create
     @feed = Feed.find(params[:feed_id])
     @article = @feed.articles.create(article_param)
-    # redirect_to feed_path(@feed)
     render json: @article
   end
 
