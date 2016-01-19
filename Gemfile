@@ -58,6 +58,6 @@ end
 #   # gem 'cucumber-rails', :require => false
 #   # gem 'database_cleaner'
 # end
-
-gem 'rack-cors', :require => 'rack/cors'
+gem 'rack-cors', '0.3.0'
+# gem 'rack-cors', :require => 'rack/cors'
 

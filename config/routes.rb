@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   match 'feeds', to: 'feeds#index', via: [:options]
   match 'feeds/:id', to: 'feeds#show', via: [:options]
+  match 'feeds/:id/articles', to: 'articles#index', via: [:options]
+  match 'feeds/:id/articles/:id', to: 'articles#show', via: [:options]
 
   resources :feeds do
     resources :articles
