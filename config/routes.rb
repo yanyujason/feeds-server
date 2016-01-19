@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get 'welcome/index'
 
+  match 'feeds', to: 'feeds#index', via: [:options]
+  match 'feeds/:id', to: 'feeds#show', via: [:options]
+
   resources :feeds do
     resources :articles
   end

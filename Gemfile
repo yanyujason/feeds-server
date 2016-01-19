@@ -1,5 +1,5 @@
-source 'https://rubygems.org'
-# source 'https://ruby.taobao.org/'
+# source 'https://rubygems.org'
+source 'https://ruby.taobao.org/'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
@@ -58,4 +58,6 @@ end
 #   # gem 'cucumber-rails', :require => false
 #   # gem 'database_cleaner'
 # end
+
+gem 'rack-cors', :require => 'rack/cors'
 
